@@ -23,10 +23,6 @@
         productPriceCell.textContent = product.productPrice;
         row.appendChild(productPriceCell);
 
-        const productCell = document.createElement("td");
-        productCell.textContent = product.product; // Assuming 'product' is a key in your product object
-        row.appendChild(productCell);
-
         const productCategoryCell = document.createElement("td");
         productCategoryCell.textContent = product.productCategory;
         row.appendChild(productCategoryCell);
