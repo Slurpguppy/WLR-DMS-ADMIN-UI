@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groq AI Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a1b26;
+            --bg-secondary: #24283b;
+            --text-primary: #a9b1d6;
+            --text-secondary: #787c99;
+            --accent: #8e24aa;
+            --accent-hover: #6a1b9a;
+            --error: #f7768e;
+            --success: #9ece6a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter Tight', sans-serif;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* Dropdown button */
+        .dropbtn {
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .dropbtn:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Chat container inside dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--bg-secondary);
+            width: 100%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 1;
+            margin-top: 5px;
+        }
+
+        /* Chatbox styles */
+        #chat-box {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-y: auto;
+            height: 300px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .message {
+            padding: 8px 12px;
+            border-radius: 6px;
+            max-width: 85%;
+            word-break: break-word;
+        }
+
+        .message.sent {
+            background: var(--accent);
+            color: white;
+            align-self: flex-end;
+        }
+
+        .message.received {
+            background: #2f3549;
+            align-self: flex-start;
+        }
+
+        #input-container {
+            display: flex;
+            gap: 12px;
+            background: var(--bg-secondary);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            background: var(--bg-primary);
+            border: 1px solid #374168;
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        #send-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown()">Chat</button>
+        <div id="dropdown-content" class="dropdown-content">
+            <div id="chat-box"></div>
+            <div id="input-container">
+                <textarea id="user-input" placeholder="Type a message..."></textarea>
+                <button id="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            var chat = document.getElementById("dropdown-content");
+            if (chat.style.display === "block") {
+                chat.style.display = "none";
+            } else {
+                chat.style.display = "block";
+            }
+        }
+
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Groq AI Chat</title>
+    <style>
+        :root {
+            --bg-primary: #1a1b26;
+            --bg-secondary: #24283b;
+            --text-primary: #a9b1d6;
+            --text-secondary: #787c99;
+            --accent: #8e24aa;
+            --accent-hover: #6a1b9a;
+            --error: #f7768e;
+            --success: #9ece6a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter Tight', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #chat-dropdown {
+            position: relative;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        #chat-container {
+            display: none;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 16px;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #chat-dropdown-button {
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border: none;
+        }
+
+        #chat-dropdown-button:hover {
+            background: var(--accent-hover);
+        }
+
+        #chat-box {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: 300px;
+            border: 1px solid var(--text-secondary);
+        }
+
+        .input-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .input {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--text-secondary);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        #send-button {
+            background: var(--success);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background: #7cbc55;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-dropdown">
+        <button id="chat-dropdown-button">Open Chat</button>
+        <div id="chat-container">
+            <div class="status">
+                <p>llama-3.3-70b-versatile | simple</p>
+            </div>
+            
+            <div id="chat-box"></div>
+            <div class="input-container">
+                <textarea class="input" id="user-input" placeholder="Type a message..."></textarea>
+                <button id="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("chat-dropdown-button").addEventListener("click", function() {
+            const chatContainer = document.getElementById("chat-container");
+            if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+                chatContainer.style.display = "flex";
+            } else {
+                chatContainer.style.display = "none";
+            }
+        });
+
+        function sendMessage() {
+            const userInput = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+            const message = userInput.value.trim();
+            if (message !== "") {
+                const messageElement = document.createElement("div");
+                messageElement.textContent = message;
+                messageElement.style.background = "#8e24aa";
+                messageElement.style.padding = "8px";
+                messageElement.style.borderRadius = "4px";
+                chatBox.appendChild(messageElement);
+                userInput.value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+function toggleDropdown() {
+    var chat = document.getElementById("dropdown-content");
+    if (chat.style.display === "block") {
+        chat.style.display = "none";
+    } else {
+        chat.style.display = "block";
+    }
+}
